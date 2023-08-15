@@ -1,0 +1,56 @@
+/**************************************************************
+# 
+#   SETTINGS ANIMATE
+#   Write by: Alexandre Lambertini
+#   Date: 15/08/2023
+#  
+/**************************************************************/
+
+:root {
+    --animate-time: 1s;
+}
+
+.animate--fade {
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity var(--animate-time), filter var(--animate-time);
+}
+
+.animate--right, .animate--left, 
+.animate--up, .animate--down 
+{
+    opacity: 0;
+    transform: translateX(0);
+    filter: blur(10px);
+    transition: opacity var(--animate-time), transform var(--animate-time), filter var(--animate-time);
+    transform-origin: center; 
+}
+
+
+.animate--up    { transform: translateY(-50%); }
+.animate--down  { transform: translateY(50%);  }
+
+.animate--right { transform: translateX(50%);  }
+.animate--left  { transform: translateX(-50%); }
+
+
+.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0);
+}
+
+.delay-01 { transition-delay: 100ms; }
+.delay-02 { transition-delay: 200ms; }
+.delay-03 { transition-delay: 300ms; }
+.delay-04 { transition-delay: 400ms; }
+.delay-05 { transition-delay: 500ms; }
+.delay-06 { transition-delay: 600ms; }
+.delay-07 { transition-delay: 700ms; }
+.delay-08 { transition-delay: 800ms; }
+.delay-09 { transition-delay: 900ms; }
+.delay-10  { transition-delay: 1000ms; }
+.delay-12  { transition-delay: 1200ms; }
+.delay-13  { transition-delay: 1300ms; }
+.delay-14  { transition-delay: 1400ms; }
+.delay-15  { transition-delay: 1500ms; }
