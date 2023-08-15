@@ -6,6 +6,8 @@ const animateSelectors = [
     '.animate--down',
 ];
 
+let resetAnimation = true; 
+
 // Config Intersection Observer
 const observerOptions = {
     root: null,
@@ -17,7 +19,11 @@ const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+        } else {
+            entry.target.classList.remove('visible');
+            if (resetAnimation) {
+                entry.target.classList.remove('visible');
+            }
         }
     });
 }, observerOptions);
@@ -28,3 +34,8 @@ animateSelectors.forEach(selector => {
         observer.observe(element);
     });
 });
+
+
+function setResetAnimation(value) {
+    resetAnimation = value;
+}
