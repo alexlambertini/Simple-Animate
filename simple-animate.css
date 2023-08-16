@@ -6,26 +6,21 @@
 #  
 /**************************************************************/
 
-:root {
-    --animate-time: 1s;
+
+body {
+    overflow-x: hidden;
 }
 
-.animate--fade {
-    opacity: 0;
-    filter: blur(10px);
-    transition: opacity var(--animate-time), filter var(--animate-time);
-}
-
-.animate--right, .animate--left, 
-.animate--up, .animate--down 
+.animate--fade, .animate--right, 
+.animate--left, .animate--up, 
+.animate--down 
 {
     opacity: 0;
     transform: translateX(0);
     filter: blur(10px);
-    transition: opacity var(--animate-time), transform var(--animate-time), filter var(--animate-time);
+    transition: opacity var(--animate-time) var(--ease-type), transform var(--animate-time) var(--ease-type), filter var(--animate-time) var(--ease-type);
     transform-origin: center; 
 }
-
 
 .animate--up    { transform: translateY(-50%); }
 .animate--down  { transform: translateY(50%);  }
@@ -54,3 +49,8 @@
 .delay-13  { transition-delay: 1300ms; }
 .delay-14  { transition-delay: 1400ms; }
 .delay-15  { transition-delay: 1500ms; }
+.delay-16  { transition-delay: 1600ms; }
+.delay-17  { transition-delay: 1700ms; }
+.delay-18  { transition-delay: 1800ms; }
+.delay-19  { transition-delay: 1900ms; }
+.delay-20  { transition-delay: 2000ms; }

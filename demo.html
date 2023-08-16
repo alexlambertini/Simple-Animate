@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alexlambertini/Simple-Animate@main/simple-animate.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/alexlambertini/Simple-Animate@main/simple-animate.js" defer></script> -->
+    <link rel="stylesheet" href="simple-animate.css">
+    <script src="simple-animate.js" defer></script>
+    <title>Sempre Animate</title>
+    <style type="text/css">
+        
+        :root {
+            --animate-time: 1s;
+            --ease-type: ease;
+        }
+
+        *, *:before,
+        *:after {
+            box-sizing: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            color: #666;
+        }
+
+        nav {
+            position:fixed;
+            width:100%;
+            background-color:#f5f5f5;
+            z-index: 1;
+        }
+
+        nav ul {
+            display:flex;
+            justify-content: space-around;
+            list-style:none;
+            margin:0;
+            padding:20px 0;
+        }
+
+        nav ul a {
+            font-weight: 600;
+        }
+
+        section {
+            height:100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width:900px;
+            max-width: 100%;
+            padding-inline: 1.5rem;
+            margin:auto;
+        }
+
+        .container h1 {
+            margin-bottom: 2rem;
+        }
+
+        .container p {
+            margin:2rem 0;
+            line-height:1.6rem;
+        }
+
+
+        .item__ol {
+            display: flex;
+            gap: 20px;
+            counter-reset: item;
+        }
+
+        .item__ol li {
+            display: flex;
+            padding: 60px;
+            background-color: #f5f5f5;
+            border-radius: 8%;
+            position: relative;
+        }
+
+        .item__ol li::after {
+            content: " ";
+            content: counter(item);
+            counter-increment: item;
+            position: absolute;
+            left: 30%;
+        }
+
+        .item__ol li.variate {
+            background-color: #e6e6e6;
+        }
+        
+        .btn-underline-action {
+            position: relative;
+            text-decoration: none;
+            color:#333;
+            transition: color 0.3s;
+        }
+
+        .btn-underline-action::after {
+            content: '';
+            position: absolute; 
+            width: 100%;
+            height: 2px; 
+            bottom: -2px; 
+            left: 0;
+            background-color: red; 
+            transform: scaleX(0); 
+            transform-origin: right center;
+            transition: transform 0.3s ease; 
+        }
+
+        .btn-underline-action.active::after {
+            transform: scaleX(1);
+            transform-origin: left center;
+        }
+
+        .btn-underline-action:hover::after {
+            transform: scaleX(1);
+            transform-origin: left center;
+        }
+
+        .shadow {
+            box-shadow: 0 0px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .StageOne {
+            background-color: #f5f5f5;
+        }
+
+        .animation-container {
+            /* border: 6px solid blue; */
+        }
+
+
+        @media (width <= 425px) {
+            .container {
+                width: 100%;
+            }
+ 
+            .item__ol {
+                flex-wrap: wrap;
+                width: 100%;
+            }
+
+            .item__ol li {
+                padding: 39px;
+            }
+
+        }
+
+        @media (width >= 426px) {
+            .item__ol {
+                flex-wrap: wrap;
+                /* border: 1px solid red; */
+            }
+        }
+        
+        @media (width >= 900px) {
+
+            .btn-underline-action::before {
+                content: "Animate "; 
+                display: inline;
+            }
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <nav class="shadow">
+        <ul>
+            <li><a class="btn-underline-action" href="#fade">Fade</a></li>
+            <li><a class="btn-underline-action" href="#up">Up</a></li>
+            <li><a class="btn-underline-action" href="#down">Down</a></li>
+            <li><a class="btn-underline-action" href="#right">Right</a></li>
+            <li><a class="btn-underline-action" href="#left">Left</a></li>
+          </ul>
+    </nav>
+      
+        
+    <div class="animation-container">
+        
+        <section id="fade" class="StageOne">
+            <div class="container">
+                <div class="animate--fade">
+                    <h1>Animate Fade</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore excepturi animi eos reprehenderit tenetur aliquid nobis aut provident recusandae enim, debitis facilis molestiae blanditiis ab quibusdam dolore ad. Sed, at?</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="up">
+            <div class="container">
+                <div class="animate--up">
+                    <h1>Animate UP</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore excepturi animi eos reprehenderit tenetur aliquid nobis aut provident recusandae enim, debitis facilis molestiae blanditiis ab quibusdam dolore ad. Sed, at?</p>
+                    <ol class="item__ol">
+                        <li class="animate--up">Item</li>
+                        <li class="animate--up delay-02">Item</li>
+                        <li class="animate--up delay-03">Item</li>
+                        <li class="animate--up delay-04">Item</li>
+                        <li class="animate--up delay-05">Item</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="down" class="StageOne">
+            <div class="container">
+                <h1 class="animate--up">Animate Down</h1>
+                <p class="animate--up delay-01">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore excepturi animi eos reprehenderit tenetur aliquid nobis aut provident recusandae enim, debitis facilis molestiae blanditiis ab quibusdam dolore ad. Sed, at?</p>
+                <ol class="item__ol">
+                    <li class="variate animate--down">Item</li>
+                    <li class="variate animate--down delay-02">Item</li>
+                    <li class="variate animate--down delay-03">Item</li>
+                    <li class="variate animate--down delay-04">Item</li>
+                    <li class="variate animate--down delay-05">Item</li>
+                </ol>
+            </div>
+        </section>
+      
+        <section id="right">
+            <div class="container">
+                <h1 class="animate--fade">Animate Right</h1>
+                <ol class="item__ol">
+                    <li class="animate--right">Item</li>
+                    <li class="animate--right delay-02">Item</li>
+                    <li class="animate--right delay-03">Item</li>
+                    <li class="animate--right delay-04">Item</li>
+                    <li class="animate--right delay-05">Item</li>
+                </ol>
+                <p class="animate--down delay-08">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore excepturi animi eos reprehenderit tenetur aliquid nobis aut provident recusandae enim, debitis facilis molestiae blanditiis ab quibusdam dolore ad. Sed, at?</p>
+            </div>
+        </section>
+      
+       <section id="left" class="StageOne">
+           <div class="container">
+                <!-- the difference between right and left is div with .animate--left  -->
+                <div class="animate--left">
+                    <h1 class="animate--fade">Animate Left</h1>
+                    <ol class="item__ol">
+                        <li class="variate animate--left">Item</li>
+                        <li class="variate animate--left delay-03">Item</li>
+                        <li class="variate animate--left delay-05">Item</li>
+                        <li class="variate animate--left delay-07">Item</li>
+                        <li class="variate animate--left delay-09">Item</li>
+                    </ol>
+                    <p class="animate--down delay-08">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore excepturi animi eos reprehenderit tenetur aliquid nobis aut provident recusandae enim, debitis facilis molestiae blanditiis ab quibusdam dolore ad. Sed, at?</p>
+                </div>
+            </div>
+       </section>
+        
+    </div>
+
+    <!-- Function to activate menu click -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('.btn-underline-action').click(function() {
+                $('.btn-underline-action').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+
+    //     window.addEventListener('scroll', function () {
+    //         const fixedMenu = document.querySelector('nav');
+
+    //         if (window.scrollY > 50) {
+    //             fixedMenu.classList.add('fixed');
+    //         } else {
+    //             fixedMenu.classList.remove('fixed');
+    //         }
+    //     });
+    // </script>
+    
+</body>
+</html>
